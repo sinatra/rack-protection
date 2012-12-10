@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Rack-protection by rkh</title>
+    <title>rack-protection by rkh</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -18,10 +18,9 @@
 
   </head>
   <body>
-
       <div id="header">
         <nav>
-          <li class="fork"><a href="https://github.com/rkh/rack-protection">Fork On GitHub</a></li>
+          <li class="fork"><a href="https://github.com/rkh/rack-protection">View On GitHub</a></li>
           <li class="downloads"><a href="https://github.com/rkh/rack-protection/zipball/master">ZIP</a></li>
           <li class="downloads"><a href="https://github.com/rkh/rack-protection/tarball/master">TAR</a></li>
           <li class="title">DOWNLOADS</li>
@@ -32,50 +31,43 @@
 
       <section>
         <div id="title">
-          <h1>Rack-protection</h1>
+          <h1>rack-protection</h1>
           <p>You should use protection!</p>
           <hr>
           <span class="credits left">Project maintained by <a href="https://github.com/rkh">rkh</a></span>
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
         </div>
 
-        <p>This gem protects against typical web attacks.
+        <p>You should use protection!</p>
+
+<p>This gem protects against typical web attacks.
 Should work for all Rack apps, including Rails.</p>
 
 <h1>Usage</h1>
 
 <p>Use all protections you probably want to use:</p>
 
-<div class="highlight">
-<pre><span class="c1"># config.ru</span>
+<div class="highlight"><pre><span class="c1"># config.ru</span>
 <span class="nb">require</span> <span class="s1">'rack/protection'</span>
 <span class="n">use</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Protection</span>
 <span class="n">run</span> <span class="no">MyApp</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Skip a single protection middleware:</p>
 
-<div class="highlight">
-<pre><span class="c1"># config.ru</span>
+<div class="highlight"><pre><span class="c1"># config.ru</span>
 <span class="nb">require</span> <span class="s1">'rack/protection'</span>
 <span class="n">use</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Protection</span><span class="p">,</span> <span class="ss">:except</span> <span class="o">=&gt;</span> <span class="ss">:path_traversal</span>
 <span class="n">run</span> <span class="no">MyApp</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Use a single protection middleware:</p>
 
-<div class="highlight">
-<pre><span class="c1"># config.ru</span>
+<div class="highlight"><pre><span class="c1"># config.ru</span>
 <span class="nb">require</span> <span class="s1">'rack/protection'</span>
 <span class="n">use</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Protection</span><span class="o">::</span><span class="no">AuthenticityToken</span>
 <span class="n">run</span> <span class="no">MyApp</span>
-</pre>
-</div>
-
+</pre></div>
 
 <h1>Prevented Attacks</h1>
 
@@ -92,12 +84,14 @@ Should work for all Rack apps, including Rails.</p>
 <li>
 <code>Rack::Protection::RemoteReferrer</code> (not included by <code>use Rack::Protection</code>)</li>
 <li><code>Rack::Protection::RemoteToken</code></li>
+<li><code>Rack::Protection::HttpOrigin</code></li>
 </ul><h2>Cross Site Scripting</h2>
 
 <p>Prevented by:</p>
 
 <ul>
-<li><code>Rack::Protection::EscapedParams</code></li>
+<li>
+<code>Rack::Protection::EscapedParams</code> (not included by <code>use Rack::Protection</code>)</li>
 <li>
 <code>Rack::Protection::XssHeader</code> (Internet Explorer only)</li>
 </ul><h2>Clickjacking</h2>
@@ -131,7 +125,7 @@ Should work for all Rack apps, including Rails.</p>
       </section>
 
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
   </body>
 </html>
