@@ -1,77 +1,58 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>rack-protection by rkh</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <meta charset="UTF-8">
+    <title>Rack::Protection by sinatra</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/rkh/rack-protection">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/rkh/rack-protection/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/rkh/rack-protection/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
+    <section class="page-header">
+      <h1 class="project-name">Rack::Protection</h1>
+      <h2 class="project-tagline">Protect against typical web attacks, works with all Rack apps, including Rails.</h2>
+      <a href="https://github.com/sinatra/rack-protection" class="btn">View on GitHub</a>
+      <a href="https://github.com/sinatra/rack-protection/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/sinatra/rack-protection/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <div class="wrapper">
-
-      <section>
-        <div id="title">
-          <h1>rack-protection</h1>
-          <p>You should use protection!</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/rkh">rkh</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
-        </div>
-
-        <p>You should use protection!</p>
+    <section class="main-content">
+      <p><a href="http://travis-ci.org/sinatra/rack-protection"><img src="https://secure.travis-ci.org/sinatra/rack-protection.png" alt="Build Status"></a></p>
 
 <p>This gem protects against typical web attacks.
 Should work for all Rack apps, including Rails.</p>
 
-<h1>Usage</h1>
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h1>
 
 <p>Use all protections you probably want to use:</p>
 
-<div class="highlight"><pre><span class="c1"># config.ru</span>
-<span class="nb">require</span> <span class="s1">'rack/protection'</span>
-<span class="n">use</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Protection</span>
-<span class="n">run</span> <span class="no">MyApp</span>
-</pre></div>
+<div class="highlight highlight-source-ruby"><pre><span class="pl-c"># config.ru</span>
+<span class="pl-k">require</span> <span class="pl-s"><span class="pl-pds">'</span>rack/protection<span class="pl-pds">'</span></span>
+use <span class="pl-c1">Rack</span>::<span class="pl-c1">Protection</span>
+run <span class="pl-c1">MyApp</span></pre></div>
 
 <p>Skip a single protection middleware:</p>
 
-<div class="highlight"><pre><span class="c1"># config.ru</span>
-<span class="nb">require</span> <span class="s1">'rack/protection'</span>
-<span class="n">use</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Protection</span><span class="p">,</span> <span class="ss">:except</span> <span class="o">=&gt;</span> <span class="ss">:path_traversal</span>
-<span class="n">run</span> <span class="no">MyApp</span>
-</pre></div>
+<div class="highlight highlight-source-ruby"><pre><span class="pl-c"># config.ru</span>
+<span class="pl-k">require</span> <span class="pl-s"><span class="pl-pds">'</span>rack/protection<span class="pl-pds">'</span></span>
+use <span class="pl-c1">Rack</span>::<span class="pl-c1">Protection</span>, <span class="pl-c1">:except</span> =&gt; <span class="pl-c1">:path_traversal</span>
+run <span class="pl-c1">MyApp</span></pre></div>
 
 <p>Use a single protection middleware:</p>
 
-<div class="highlight"><pre><span class="c1"># config.ru</span>
-<span class="nb">require</span> <span class="s1">'rack/protection'</span>
-<span class="n">use</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Protection</span><span class="o">::</span><span class="no">AuthenticityToken</span>
-<span class="n">run</span> <span class="no">MyApp</span>
-</pre></div>
+<div class="highlight highlight-source-ruby"><pre><span class="pl-c"># config.ru</span>
+<span class="pl-k">require</span> <span class="pl-s"><span class="pl-pds">'</span>rack/protection<span class="pl-pds">'</span></span>
+use <span class="pl-c1">Rack</span>::<span class="pl-c1">Protection</span>::<span class="pl-c1">AuthenticityToken</span>
+run <span class="pl-c1">MyApp</span></pre></div>
 
-<h1>Prevented Attacks</h1>
+<h1>
+<a id="prevented-attacks" class="anchor" href="#prevented-attacks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Prevented Attacks</h1>
 
-<h2>Cross Site Request Forgery</h2>
+<h2>
+<a id="cross-site-request-forgery" class="anchor" href="#cross-site-request-forgery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cross Site Request Forgery</h2>
 
 <p>Prevented by:</p>
 
@@ -85,7 +66,10 @@ Should work for all Rack apps, including Rails.</p>
 <code>Rack::Protection::RemoteReferrer</code> (not included by <code>use Rack::Protection</code>)</li>
 <li><code>Rack::Protection::RemoteToken</code></li>
 <li><code>Rack::Protection::HttpOrigin</code></li>
-</ul><h2>Cross Site Scripting</h2>
+</ul>
+
+<h2>
+<a id="cross-site-scripting" class="anchor" href="#cross-site-scripting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cross Site Scripting</h2>
 
 <p>Prevented by:</p>
 
@@ -93,39 +77,80 @@ Should work for all Rack apps, including Rails.</p>
 <li>
 <code>Rack::Protection::EscapedParams</code> (not included by <code>use Rack::Protection</code>)</li>
 <li>
-<code>Rack::Protection::XssHeader</code> (Internet Explorer only)</li>
-</ul><h2>Clickjacking</h2>
+<code>Rack::Protection::XSSHeader</code> (Internet Explorer only)</li>
+<li><code>Rack::Protection::ContentSecurityPolicy</code></li>
+</ul>
+
+<h2>
+<a id="clickjacking" class="anchor" href="#clickjacking" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Clickjacking</h2>
 
 <p>Prevented by:</p>
 
 <ul>
 <li><code>Rack::Protection::FrameOptions</code></li>
-</ul><h2>Directory Traversal</h2>
+</ul>
+
+<h2>
+<a id="directory-traversal" class="anchor" href="#directory-traversal" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Directory Traversal</h2>
 
 <p>Prevented by:</p>
 
 <ul>
 <li><code>Rack::Protection::PathTraversal</code></li>
-</ul><h2>Session Hijacking</h2>
+</ul>
+
+<h2>
+<a id="session-hijacking" class="anchor" href="#session-hijacking" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Session Hijacking</h2>
 
 <p>Prevented by:</p>
 
 <ul>
 <li><code>Rack::Protection::SessionHijacking</code></li>
-</ul><h2>IP Spoofing</h2>
+</ul>
+
+<h2>
+<a id="ip-spoofing" class="anchor" href="#ip-spoofing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IP Spoofing</h2>
 
 <p>Prevented by:</p>
 
 <ul>
 <li><code>Rack::Protection::IPSpoofing</code></li>
-</ul><h1>Installation</h1>
+</ul>
+
+<h2>
+<a id="helps-to-protect-against-protocol-downgrade-attacks-and-cookie-hijacking" class="anchor" href="#helps-to-protect-against-protocol-downgrade-attacks-and-cookie-hijacking" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Helps to protect against protocol downgrade attacks and cookie hijacking</h2>
+
+<p>Prevented by:</p>
+
+<ul>
+<li>
+<code>Rack::Protection::StrictTransport</code> (not included by <code>use Rack::Protection</code>)</li>
+</ul>
+
+<h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h1>
 
 <pre><code>gem install rack-protection
 </code></pre>
-      </section>
 
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+<h1>
+<a id="instrumentation" class="anchor" href="#instrumentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Instrumentation</h1>
+
+<p>Instrumentation is enabled by passing in an instrumenter as an option.</p>
+
+<pre><code>use Rack::Protection, instrumenter: ActiveSupport::Notifications
+</code></pre>
+
+<p>The instrumenter is passed a namespace (String) and environment (Hash). The namespace is 'rack.protection' and the attack type can be obtained from the environment key 'rack.protection.attack'.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/sinatra/rack-protection">Rack::Protection</a> is maintained by <a href="https://github.com/sinatra">sinatra</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
   </body>
 </html>
